@@ -12,6 +12,7 @@ import CreateTeam from './pages/CreateTeam';
 import DistributeSurvey  from './pages/DistributeSurvey';
 import UploadSurveyCSV from './components/UploadSurveyCSV';
 import Footer from './components/Footer';
+import ExternalSurveyEmbed from './pages/ExternalSurveyEmbed';
 
 export default function App() {
  const layoutStyle = {
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/team" element={<CreateTeam />} />
           <Route path="/public-survey/upload-csv" element={<UploadSurveyCSV />} />
+<Route path="/external-survey" element={<ExternalSurveyEmbed url="https://docs.google.com/forms/d/e/1FAIpQLSczfoICQQj2nhmu1Xwv5XhtHV3PnlnVheL_bnkzIcN5oQtxFw/viewform?embedded=true" />} />
 
         </Routes>
         
