@@ -82,7 +82,7 @@ const Dashboard = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Survey Dashboard</h2>
+      <h4 className="mb-4">Survey Dashboard</h4>
 
       <div className="form-group mb-4">
         <label>Select Survey:</label>

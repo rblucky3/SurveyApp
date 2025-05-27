@@ -27,7 +27,7 @@ const DistributeSurvey = () => {
 
   return (
     <div className="container mt-5">
-      <h3>Distribute Survey</h3>
+      <h4>Distribute Survey</h4>
       <select
         className="form-control my-2"
         value={selectedSurvey}
@@ -45,7 +45,8 @@ const DistributeSurvey = () => {
         value={recipientEmail}
         onChange={e => setRecipientEmail(e.target.value)}
       />
-      <button className="btn btn-primary" onClick={handleSend}>Send Survey</button>
+      <br></br>
+      <button className="btn btn-primary" onClick={handleSend}>Send Survey Link</button>
     </div>
   );
 };

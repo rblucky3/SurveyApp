@@ -87,7 +87,7 @@ const TakeSurvey = () => {
 
   return (
     <div className="container mt-5">
-      <h3>Take a Survey</h3>
+      <h4>Take a Survey</h4>
 
       {/* Survey Dropdown */}
       <div className="mb-4">

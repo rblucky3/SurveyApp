@@ -51,7 +51,7 @@ const CreateSurvey = () => {
 
   return (
     <div className="container mt-4">
-      <h2>Create Survey</h2>
+      <h4>Adding Survey Detail</h4>
 
       <input
         className="form-control my-2"
