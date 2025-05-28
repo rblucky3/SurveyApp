@@ -3,6 +3,7 @@ from flask_mail import Message
 from models import Survey, Question, Response
 from db import db
 from extensions import mail
+import uuid
 
 
 def create_survey(data, user_id):
@@ -13,7 +14,7 @@ def create_survey(data, user_id):
         title=data['title'],
         description=data['description'],
         created_by=user_id,
-        public_key=data.get('public_key')
+        public_key=data.get('public_key') or str(uuid.uuid4())
     )
     db.session.add(survey)
     db.session.flush()
@@ -28,7 +29,8 @@ def create_survey(data, user_id):
         db.session.add(question)
 
     db.session.commit()
-    return jsonify({"message": "Survey created", "survey_id": survey.id})
+    return {"message": "Survey created", "survey_id": survey.id}
+    #return jsonify({"message": "Survey created", "survey_id": survey.id})
 
 
 def get_survey_by_id(survey_id):
@@ -36,15 +38,21 @@ def get_survey_by_id(survey_id):
     Get survey details and questions by ID.
     """
     survey = Survey.query.get_or_404(survey_id)
-    return jsonify({
+    return{
+
         "id": survey.id,
         "title": survey.title,
         "description": survey.description,
+        "public_key":survey.public_key,
         "questions": [
             {"id": q.id, "text": q.text, "type": q.type, "options": q.options}
             for q in survey.questions
         ]
-    })
+    } #)
+
+
+def get_survey_model_by_id(survey_id):
+    return Survey.query.get_or_404(survey_id)
 
 
 def distribute_survey_via_email(data):
@@ -116,49 +124,3 @@ def get_survey_by_public_key(key):
     })
 
 
-
-'''
-
-
-from db import db
-from models.survey import Survey, Question
-from utils import parse_csv
-
-def create_survey_with_questions(data):
-    survey = Survey(title=data['title'], description=data.get('description', ''))
-    db.session.add(survey)
-    for q in data['questions']:
-        question = Question(
-            survey=survey,
-            question_text=q['question_text'],
-            question_type=q['question_type'],
-            options=q.get('options')
-        )
-        db.session.add(question)
-    db.session.commit()
-    return {'survey_id': survey.id}
-
-def parse_csv_and_create_survey(file, title, description):
-    questions = parse_csv(file)
-    survey_data = {'title': title, 'description': description, 'questions': questions}
-    return create_survey_with_questions(survey_data)
-
-def get_survey_details(survey_id):
-    survey = Survey.query.get(survey_id)
-    return {
-        'id': survey.id,
-        'title': survey.title,
-        'description': survey.description,
-        'questions': [
-            {
-                'id': q.id,
-                'question_text': q.question_text,
-                'question_type': q.question_type,
-                'options': q.options
-            } for q in survey.questions
-        ]
-    }
-
-    
-
-'''

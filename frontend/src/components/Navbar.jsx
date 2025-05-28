@@ -23,33 +23,34 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+             <li className="nav-item">
+              <Link to="/" className="nav-link">Dashboard</Link>
+            </li>
             <li className="nav-item">
               <Link to="/create" className="nav-link">Add Survey</Link>
             </li>
              <li className="nav-item">
                 <Link className="nav-link" to="/survey">Take Survey</Link> {/* static example */}
-              </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link">Dashboard</Link>
-            </li>
+              </li>          
             <li className="nav-item">
               <Link className="nav-link" to="/distribute">Distribute Survey</Link>
             </li>
              <li className="nav-item">
               <Link className="nav-link" to="/public-survey/upload-csv">Upload Survey Responses</Link>
             </li>
+             <li className="nav-item">
+              <Link className="nav-link" to="/external-survey">Google Form</Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/team">Teams</Link>
-            </li>
+            </li>         
             <li className="nav-item">
               <Link className="nav-link" to="/register">Register</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/login">Login</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/external-survey">Google Form</Link>
-            </li>
+            
           </ul>
         </div>
       </div>

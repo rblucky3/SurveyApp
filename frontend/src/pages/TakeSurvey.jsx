@@ -105,11 +105,12 @@ const TakeSurvey = () => {
           ))}
         </select>
       </div>
+      <br></br>
 
       {/* Survey UI */}
       {survey && (
         <>
-          <h4>{survey.title}</h4>
+          <h5>{survey.title}</h5>
           <p>{survey.description}</p>
 
           {submitted ? (
